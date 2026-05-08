@@ -1,0 +1,2 @@
+/* Global resets – keep minimal, App.css handles design system */
+body { margin: 0; }

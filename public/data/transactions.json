@@ -1,0 +1,47 @@
+[
+  { "transactionId": "T1001", "customerId": "C001", "customerName": "Alice Johnson",   "amount": 120, "date": "2025-01-05" },
+  { "transactionId": "T1002", "customerId": "C001", "customerName": "Alice Johnson",   "amount": 75,  "date": "2025-02-15" },
+  { "transactionId": "T1003", "customerId": "C001", "customerName": "Alice Johnson",   "amount": 200, "date": "2025-03-03" },
+
+  { "transactionId": "T1004", "customerId": "C002", "customerName": "Bob Smith",       "amount": 58,  "date": "2025-01-10" },
+  { "transactionId": "T1005", "customerId": "C002", "customerName": "Bob Smith",       "amount": 130, "date": "2025-02-07" },
+  { "transactionId": "T1006", "customerId": "C002", "customerName": "Bob Smith",       "amount": 42,  "date": "2025-03-22" },
+
+  { "transactionId": "T1007", "customerId": "C003", "customerName": "Carol Davis",     "amount": 175, "date": "2025-01-18" },
+  { "transactionId": "T1008", "customerId": "C003", "customerName": "Carol Davis",     "amount": 98,  "date": "2025-02-20" },
+
+  { "transactionId": "T1009", "customerId": "C004", "customerName": "David Wilson",    "amount": 50,  "date": "2025-01-24" },
+  { "transactionId": "T1010", "customerId": "C004", "customerName": "David Wilson",    "amount": 165, "date": "2025-02-14" },
+
+  { "transactionId": "T1011", "customerId": "C005", "customerName": "Emma Martinez",   "amount": 310, "date": "2025-01-02" },
+  { "transactionId": "T1012", "customerId": "C005", "customerName": "Emma Martinez",   "amount": 55,  "date": "2025-03-08" },
+
+  { "transactionId": "T1013", "customerId": "C006", "customerName": "Farah Khan",       "amount": 95,  "date": "2025-01-28" },
+  { "transactionId": "T1014", "customerId": "C006", "customerName": "Farah Khan",       "amount": 48,  "date": "2025-03-11" },
+
+  { "transactionId": "T1015", "customerId": "C007", "customerName": "George Lee",      "amount": 220, "date": "2025-02-03" },
+  { "transactionId": "T1016", "customerId": "C007", "customerName": "George Lee",      "amount": 34,  "date": "2025-03-19" },
+
+  { "transactionId": "T1017", "customerId": "C008", "customerName": "Hannah Patel",    "amount": 115, "date": "2025-01-14" },
+  { "transactionId": "T1018", "customerId": "C008", "customerName": "Hannah Patel",    "amount": 86,  "date": "2025-02-26" },
+
+  { "transactionId": "T1019", "customerId": "C009", "customerName": "Isaac Chen",      "amount": 47,  "date": "2025-01-30" },
+  { "transactionId": "T1020", "customerId": "C009", "customerName": "Isaac Chen",      "amount": 132, "date": "2025-03-05" },
+
+  { "transactionId": "T1021", "customerId": "C010", "customerName": "Jasmine Park",   "amount": 78,  "date": "2025-02-09" },
+  { "transactionId": "T1022", "customerId": "C010", "customerName": "Jasmine Park",   "amount": 210, "date": "2025-03-28" },
+
+  { "transactionId": "T1023", "customerId": "C011", "customerName": "Kevin Brown",    "amount": 101, "date": "2025-01-12" },
+  { "transactionId": "T1024", "customerId": "C011", "customerName": "Kevin Brown",    "amount": 64,  "date": "2025-02-23" },
+
+  { "transactionId": "T1025", "customerId": "C012", "customerName": "Lina Gomez",      "amount": 145, "date": "2025-03-02" },
+
+  { "transactionId": "T1026", "customerId": "C013", "customerName": "Marcus Reed",    "amount": 30,  "date": "2025-02-16" },
+  { "transactionId": "T1027", "customerId": "C013", "customerName": "Marcus Reed",    "amount": 190, "date": "2025-03-22" },
+
+  { "transactionId": "T1028", "customerId": "C014", "customerName": "Nina Roberts",   "amount": 85,  "date": "2025-01-21" },
+  { "transactionId": "T1029", "customerId": "C014", "customerName": "Nina Roberts",   "amount": 120, "date": "2025-02-15" },
+
+  { "transactionId": "T1030", "customerId": "C015", "customerName": "Omar Ali",       "amount": 57,  "date": "2025-03-12" },
+  { "transactionId": "T1031", "customerId": "C015", "customerName": "Omar Ali",       "amount": 215, "date": "2025-03-29" }
+]
