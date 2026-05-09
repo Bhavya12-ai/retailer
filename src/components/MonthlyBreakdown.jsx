@@ -7,22 +7,25 @@
 
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { monthlyBreakdownColumnsMeta } from "../constants/uiConstants";
+import {
+  monthlyBreakdownColumnsMeta,
+  ROWS_PER_PAGE_OPTIONS,
+  monthlyBreakdownText,
+  tableLabels,
+} from "../constants/uiConstants";
+import "./MonthlyBreakdown.css";
 
-function pointColor(points) {
-  if (points >= 300) return "#0b6f46";
-  if (points >= 150) return "#3730a3";
-  if (points >= 50) return "#b45309";
-  return "#334155";
+function pointClass(points) {
+  if (points >= 300) return "monthly-breakdown-points-high";
+  if (points >= 150) return "monthly-breakdown-points-mid";
+  if (points >= 50) return "monthly-breakdown-points-low";
+  return "monthly-breakdown-points-base";
 }
-
-const ROWS_PER_PAGE_OPTIONS = [5, 10, 20];
 
 export default function MonthlyBreakdown({ monthlyData, months, selectedCustomerId }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  // Filter to only show selected customer
   const selectedCustomerData = selectedCustomerId && monthlyData[selectedCustomerId]
     ? { [selectedCustomerId]: monthlyData[selectedCustomerId] }
     : monthlyData;
@@ -58,20 +61,20 @@ export default function MonthlyBreakdown({ monthlyData, months, selectedCustomer
   };
 
   return (
-    <section style={styles.section}>
-      <h2 style={styles.heading}>Monthly Points Breakdown</h2>
-      <p style={styles.subtitle}>Points earned per customer, per month.</p>
+    <section className="monthly-breakdown-section">
+      <h2 className="monthly-breakdown-heading">{monthlyBreakdownText.heading}</h2>
+      <p className="monthly-breakdown-subtitle">{monthlyBreakdownText.subtitle}</p>
 
-      <table className="simple-table">
+      <table className="simple-table monthly-breakdown-table">
         <thead>
           <tr>
             {monthlyBreakdownColumnsMeta.map((columnMeta) => (
-              <th key={columnMeta.field} style={styles.tableHeader}>
+              <th key={columnMeta.field} className="monthly-breakdown-table-header">
                 {columnMeta.headerName}
               </th>
             ))}
             {months.map((month) => (
-              <th key={month.key} style={styles.tableHeader}>
+              <th key={month.key} className="monthly-breakdown-table-header">
                 {month.label}
               </th>
             ))}
@@ -80,15 +83,15 @@ export default function MonthlyBreakdown({ monthlyData, months, selectedCustomer
         <tbody>
           {paginatedRows.map((row) => (
             <tr key={row.customerId}>
-              <td style={styles.tableCell}>{row.customerName}</td>
-              <td style={styles.tableCell}>{row.customerId}</td>
-              <td style={styles.tableCell}>
-                <span style={{ color: pointColor(row.totalPoints), fontWeight: 700 }}>
+              <td className="monthly-breakdown-table-cell">{row.customerName}</td>
+              <td className="monthly-breakdown-table-cell">{row.customerId}</td>
+              <td className="monthly-breakdown-table-cell">
+                <span className={pointClass(row.totalPoints)}>
                   {row.totalPoints.toLocaleString()}
                 </span>
               </td>
               {months.map((month) => (
-                <td key={month.key} style={styles.tableCell}>
+                <td key={month.key} className="monthly-breakdown-table-cell">
                   {row[month.key].toLocaleString()}
                 </td>
               ))}
@@ -97,16 +100,16 @@ export default function MonthlyBreakdown({ monthlyData, months, selectedCustomer
         </tbody>
       </table>
 
-      {rows.length === 0 && <p style={styles.emptyState}>Monthly breakdown data is not available.</p>}
+      {rows.length === 0 && <p className="monthly-breakdown-empty-state">{monthlyBreakdownText.emptyState}</p>}
 
       {rows.length > 0 && (
-        <div style={styles.paginationWrapper}>
-          <div style={styles.rowsPerPageControl}>
-            <label style={styles.label}>Rows per page:</label>
+        <div className="monthly-breakdown-pagination">
+          <div className="monthly-breakdown-rows-per-page">
+            <label className="monthly-breakdown-label">{tableLabels.rowsPerPage}</label>
             <select
               value={rowsPerPage}
               onChange={(event) => handleChangeRowsPerPage(Number(event.target.value))}
-              style={styles.select}
+              className="monthly-breakdown-select"
             >
               {ROWS_PER_PAGE_OPTIONS.map((option) => (
                 <option key={option} value={option}>
@@ -116,26 +119,26 @@ export default function MonthlyBreakdown({ monthlyData, months, selectedCustomer
             </select>
           </div>
 
-          <div style={styles.pageInfo}>
+          <div className="monthly-breakdown-page-info">
             Page {currentPage} of {totalPages}
           </div>
 
-          <div style={styles.paginationControls}>
+          <div className="monthly-breakdown-controls">
             <button
               onClick={handlePreviousPage}
               disabled={currentPage === 1}
-              style={{ ...styles.paginationButton, opacity: currentPage === 1 ? 0.5 : 1 }}
+              className="monthly-breakdown-pagination-button"
               type="button"
             >
-              Previous
+              {tableLabels.previousButton}
             </button>
             <button
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
-              style={{ ...styles.paginationButton, opacity: currentPage === totalPages ? 0.5 : 1 }}
+              className="monthly-breakdown-pagination-button"
               type="button"
             >
-              Next
+              {tableLabels.nextButton}
             </button>
           </div>
         </div>
@@ -143,45 +146,6 @@ export default function MonthlyBreakdown({ monthlyData, months, selectedCustomer
     </section>
   );
 }
-
-const styles = {
-  section: { marginBottom: "2.5rem" },
-  heading: { fontSize: "1.25rem", fontWeight: 700, color: "#111", marginBottom: "0.4rem" },
-  subtitle: { color: "#444", fontSize: "0.95rem", marginBottom: "1rem" },
-  tableHeader: { textAlign: "left", padding: "10px 12px", background: "#f5f5f5", fontWeight: 700 },
-  tableCell: { padding: "10px 12px", borderTop: "1px solid #ddd", color: "#111" },
-  emptyState: { color: "#555", fontSize: "0.95rem", marginTop: "0.75rem" },
-  paginationWrapper: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginTop: "1.25rem",
-    padding: "0.75rem 0",
-    borderTop: "1px solid #ddd",
-    gap: "1rem",
-    flexWrap: "wrap",
-  },
-  rowsPerPageControl: { display: "flex", alignItems: "center", gap: "0.5rem" },
-  label: { fontSize: "0.9rem", color: "#111", fontWeight: 600 },
-  select: {
-    padding: "6px 8px",
-    border: "1px solid #ccc",
-    borderRadius: "4px",
-    fontSize: "0.9rem",
-    cursor: "pointer",
-  },
-  pageInfo: { fontSize: "0.9rem", color: "#555", fontWeight: 600 },
-  paginationControls: { display: "flex", gap: "0.5rem" },
-  paginationButton: {
-    padding: "8px 12px",
-    border: "1px solid #ccc",
-    background: "#fff",
-    color: "#111",
-    fontSize: "0.9rem",
-    borderRadius: "4px",
-    cursor: "pointer",
-  },
-};
 
 MonthlyBreakdown.propTypes = {
   monthlyData: PropTypes.objectOf(

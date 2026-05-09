@@ -1,19 +1,10 @@
 export const rewardRules = [
-  { range: "$0 – $50",    pointsDescription: "0 points",           color: "#94a3b8" },
-  { range: "$50 – $100",  pointsDescription: "+1 point / $1",      color: "#fbbf24" },
-  { range: "Over $100",   pointsDescription: "+2 points / $1",     color: "#818cf8" },
-  { range: "Example $120", pointsDescription: "2×$20 + 1×$50 = 90 points", color: "#34d399" },
+  { range: "$0 – $50",    pointsDescription: "0 points",      },
+  { range: "$50 – $100",  pointsDescription: "+1 point / $1",   },
+  { range: "Over $100",   pointsDescription: "+2 points / $1",   },
+  { range: "Example $120", pointsDescription: "2×$20 + 1×$50 = 90 points"},
 ];
 
-export const leaderboardMedals = ["🥇", "🥈", "🥉"];
-
-export const leaderboardAccents = [
-  { border: "#fbbf24", glow: "rgba(251,191,36,0.25)" },
-  { border: "#94a3b8", glow: "rgba(148,163,184,0.2)" },
-  { border: "#cd7c2e", glow: "rgba(205,124,46,0.2)" },
-  { border: "#818cf8", glow: "rgba(129,140,248,0.15)" },
-  { border: "#34d399", glow: "rgba(52,211,153,0.15)" },
-];
 
 export const transactionTableColumnsMeta = [
   { field: "transactionId", headerName: "Txn ID" },
@@ -30,6 +21,47 @@ export const monthlyBreakdownColumnsMeta = [
   { field: "customerId", headerName: "ID" },
   { field: "totalPoints", headerName: "Total Points" },
 ];
+
+export const ROWS_PER_PAGE_OPTIONS = [5, 10, 20];
+
+export const tableLabels = {
+  transactionLogHeading: "Transaction Log",
+  searchPlaceholder: "Search txn ID, customer, date or month",
+  filterCustomerPlaceholder: "Filter by customer ID",
+  filterMonthPlaceholder: "Filter by month",
+  clearButton: "Clear",
+  rowsPerPage: "Rows per page:",
+  previousButton: "Previous",
+  nextButton: "Next",
+  noMatchingTransactions: "No matching transactions found.",
+};
+
+export const monthlyBreakdownText = {
+  heading: "Monthly Points Breakdown",
+  subtitle: "Points earned per customer, per month.",
+  emptyState: "Monthly breakdown data is not available.",
+};
+
+export const summaryCardText = {
+  heading: "Leaderboard",
+  headers: ["Rank", "Customer", "Points", "Transactions"],
+};
+
+export const pageStrings = {
+  dashboardHeading: "Customer Rewards Dashboard",
+  dashboardHint: "Select a customer to view their reward activity.",
+  monthlyHint: "Monthly breakdown of reward points.",
+  detailedHint: "Detailed transaction view.",
+  customerNotFound: "Customer not found.",
+  noRecentTransactions: "No transactions in the recent 3 months.",
+  totalTransactions: "Total Transactions:",
+  customerIdLabel: "Customer ID:",
+  totalPointsLabel: "Total Points:",
+  recentTransactionsLabel: "Recent 3-Month Transactions:",
+  backToMonthlyView: "← Back to Monthly View",
+  backToDashboard: "← Back to Dashboard",
+  viewDetailedTransactions: "View Detailed Transactions →",
+};
 
 export const appHeaderMetadata = [
   { icon: "📅", label: "Jan – Mar 2025" },

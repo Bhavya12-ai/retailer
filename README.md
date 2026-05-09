@@ -1,70 +1,194 @@
-# Getting Started with Create React App
+# Retailer Rewards Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A small React application that simulates a retailer rewards dashboard using a local JSON mock instead of a backend API. The app demonstrates async data loading, error handling, search, sort, pagination, and PropTypes validation.
 
-## Available Scripts
+## Project Summary
 
-In the project directory, you can run:
+The application loads transaction data from a local mock file (`public/data/transactions.json`) and treats it as if it came from an external API. It calculates reward points, groups results by customer and month, and displays:
 
-### `npm start`
+- Dashboard summary and leaderboard
+- Monthly customer breakdown
+- Detailed transaction view
+- Search and sort support in transaction tables
+- Loading state and API error handling
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Solution Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Key features implemented:
 
-### `npm test`
+- Local JSON mock API simulation via `src/api/fetchTransactions.js`
+- Async data load with `loading` and `error` state in `src/hooks/useRewardsData.js`
+- No separate backend repository required
+- Dynamic data flow via props and state
+- All static UI text and labels centralized in `src/constants/uiConstants.js`
+- Component-level CSS files for clean styling
+- Strong PropTypes validation via `src/constants/propTypes.js`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Project Setup
 
-### `npm run build`
+### Requirements
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js installed
+- npm available in your terminal
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+```
 
-### `npm run eject`
+### Run locally
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Run tests
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm test
+```
 
-## Learn More
+To run tests once without watch mode:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm test -- --watchAll=false
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Build for production
 
-### Code Splitting
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Folder Structure
 
-### Analyzing the Bundle Size
+```
+public/
+  data/
+    transactions.json       # Local mock transaction dataset
+src/
+  api/
+    fetchTransactions.js    # Simulated async API loader
+  components/
+    MonthlyBreakdown.jsx    # Monthly customer points table
+    MonthlyBreakdown.css
+    SummaryCards.jsx        # Leaderboard-style summary cards table
+    SummaryCards.css
+    TransactionTable.jsx    # Searchable, sortable transaction detail table
+    TransactionTable.css
+    RewardsDashboard.jsx    # Main dashboard wrapper
+    RewardsDashboard.css
+  constants/
+    uiConstants.js         # All static labels, table headers, and rules
+    propTypes.js           # Shared PropTypes shapes
+  hooks/
+    useRewardsData.js      # Data fetch, enrichment, loading/error state
+    useSelectedCustomer.js  # Selected customer state and derived data
+  pages/
+    DashboardPage.jsx       # App landing page with customer selector
+    DashboardPage.css
+    MonthlyViewPage.jsx     # Monthly customer view page
+    MonthlyViewPage.css
+    DetailedViewPage.jsx    # Detailed transaction report page
+    DetailedViewPage.css
+  utils/
+    calculatePoints.js      # Reward point calculation logic
+    calculatePoints.test.js # Unit tests for calculatePoints
+  App.js
+  App.css
+  index.js
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Component Details
 
-### Making a Progressive Web App
+### `App.js`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The app shell loads reward data and controls page navigation between:
 
-### Advanced Configuration
+- `DashboardPage`
+- `MonthlyViewPage`
+- `DetailedViewPage`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### `src/hooks/useRewardsData.js`
 
-### Deployment
+Handles:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- fetching the mock JSON data asynchronously
+- loading and error state
+- enriching transactions with `points`, `monthKey`, and `monthLabel`
+- computing monthly breakdowns and customer totals
 
-### `npm run build` fails to minify
+### `src/api/fetchTransactions.js`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Simulates a network call using `fetch()` on the local mock file and a delay. It returns a Promise and rejects on failure.
+
+### `DashboardPage.jsx`
+
+Displays the top-level dashboard experience and includes:
+
+- customer selector dropdown
+- leaderboard cards
+- pagination support
+- fallback message for no data
+- retry button on load failure
+
+### `MonthlyViewPage.jsx`
+
+Shows monthly reward totals for one selected customer.
+
+### `DetailedViewPage.jsx`
+
+Shows the most recent transactions for the selected customer.
+
+### `TransactionTable.jsx`
+
+Supports:
+
+- full-text search across customer name, transaction ID, date, and month
+- sortable column headers with visual arrows
+- client-side pagination
+
+## Rewards Calculation Logic
+
+Points are calculated using the rules:
+
+- `0 points` for amount up to `$50`
+- `1 point` per whole dollar between `$50` and `$100`
+- `2 points` per whole dollar above `$100`
+
+The logic is implemented in `src/utils/calculatePoints.js`.
+
+## Tests
+
+The repository includes unit tests for reward calculation logic in:
+
+- `src/utils/calculatePoints.test.js`
+
+Test coverage includes:
+
+- positive reward scenarios
+- negative amount handling
+- fractional amount rounding to whole dollars
+- edge cases around `$50` and `$100`
+
+## Screenshots
+
+Add actual screenshots to the repository under `screenshots/` and update these links if needed.
+
+```md
+![Dashboard screenshot](screenshots/dashboard.png)
+![Search and sort screenshot](screenshots/search-sort.png)
+![Test results screenshot](screenshots/test-results.png)
+```
+
+## Notes
+
+- All page and component styling is separated into CSS files.
+- Static labels and table headers are centralized in `src/constants/uiConstants.js`.
+- Components receive all data through props or derived state; no inline hard-coded datasets are used.
+- The mock API remains inside the project, so there is no separate backend repository.
+
+

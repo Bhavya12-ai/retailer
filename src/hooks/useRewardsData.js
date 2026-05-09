@@ -19,8 +19,11 @@ export function useRewardsData() {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading]           = useState(true);
   const [error, setError]               = useState(null);
+  const [fetchKey, setFetchKey]         = useState(0);
 
-  // ── 1. Fetch on mount ──────────────────────────────────────────────────────
+  const reload = () => setFetchKey((current) => current + 1);
+
+  // ── 1. Fetch on mount / retry ─────────────────────────────────────────────
   useEffect(() => {
     let cancelled = false; // guard against setting state on unmounted component
 
@@ -42,7 +45,7 @@ export function useRewardsData() {
       });
 
     return () => { cancelled = true; };
-  }, []);
+  }, [fetchKey]);
 
   // ── 2. Enrich transactions with calculated points ──────────────────────────
   const enrichedTransactions = useMemo(
@@ -111,6 +114,7 @@ export function useRewardsData() {
     monthlyData,
     customerTotals,
     months,
+    reload,
   };
 }
 
