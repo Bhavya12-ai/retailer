@@ -1,7 +1,7 @@
 
 import React, { useState, useMemo } from "react";
 import PropTypes from "prop-types";
-import "./TransactionTable.css";
+import "./styles/TransactionTable.css";
 import {
   transactionTableColumnsMeta,
   ROWS_PER_PAGE_OPTIONS,

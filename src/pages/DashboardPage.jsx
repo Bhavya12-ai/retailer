@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import SummaryCards from "../components/SummaryCards";
 import { rewardRules } from "../constants/uiConstants";
 import { transactionShape, customerTotalShape, monthShape, monthlyDataShape } from "../constants/propTypes";
-import "./DashboardPage.css";
+import "./styles/DashboardPage.css";
 
 function RulesLegend() {
   return (

@@ -13,7 +13,7 @@ import {
   monthlyBreakdownText,
   tableLabels,
 } from "../constants/uiConstants";
-import "./MonthlyBreakdown.css";
+import "./styles/MonthlyBreakdown.css";
 
 function pointClass(points) {
   if (points >= 300) return "monthly-breakdown-points-high";

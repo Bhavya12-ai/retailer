@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { summaryCardText } from "../constants/uiConstants";
 import { customerTotalShape } from "../constants/propTypes";
-import "./SummaryCards.css";
+import "./styles/SummaryCards.css";
 
 export default function SummaryCards({ customerTotals }) {
   return (

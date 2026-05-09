@@ -6,7 +6,7 @@ import { rewardRules } from "../constants/uiConstants";
 import SummaryCards from "./SummaryCards";
 import MonthlyBreakdown from "./MonthlyBreakdown";
 import TransactionTable from "./TransactionTable";
-import "./RewardsDashboard.css";
+import "./styles/RewardsDashboard.css";
 
 function Skeleton() {
   return (

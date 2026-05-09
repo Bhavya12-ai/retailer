@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import TransactionTable from "../components/TransactionTable";
 import { customerTotalShape, transactionShape } from "../constants/propTypes";
 import { pageStrings } from "../constants/uiConstants";
-import "./DetailedViewPage.css";
+import "./styles/DetailedViewPage.css";
 
 export default function DetailedViewPage({ customerTotals, transactions, selectedCustomerId, onBack }) {
   const selectedCustomer = customerTotals.find((c) => c.customerId === selectedCustomerId);

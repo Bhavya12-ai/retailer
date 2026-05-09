@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import MonthlyBreakdown from "../components/MonthlyBreakdown";
 import { customerTotalShape, monthShape, monthlyDataShape } from "../constants/propTypes";
 import { pageStrings } from "../constants/uiConstants";
-import "./MonthlyViewPage.css";
+import "./styles/MonthlyViewPage.css";
 
 export default function MonthlyViewPage({ customerTotals, monthlyData, months, selectedCustomerId, onBack, onNext }) {
   const selectedCustomer = customerTotals.find((c) => c.customerId === selectedCustomerId);
