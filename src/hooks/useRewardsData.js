@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useMemo } from "react";
-import transactionsData from "../data/transactions.json";
+import { loadTransactions } from "../utils/transactionService";
 import { calculatePoints, formatMonth, getMonthKey } from "../utils/calculatePoints";
 
 export function useRewardsData() {
@@ -14,21 +14,24 @@ export function useRewardsData() {
   useEffect(() => {
     let cancelled = false; 
 
-    setLoading(true);
-    setError(null);
-
-    const loadData = () => {
-      if (!cancelled) {
-        setTransactions(transactionsData);
-        setLoading(false);
+    const loadData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const data = await loadTransactions();
+        if (!cancelled) {
+          setTransactions(data);
+          setLoading(false);
+        }
+      } catch (err) {
+        if (!cancelled) {
+          setError(err.message);
+          setLoading(false);
+        }
       }
     };
 
-    const timer = setTimeout(loadData, 600);
-    return () => {
-      cancelled = true;
-      clearTimeout(timer);
-    };
+    loadData();
   }, [fetchKey]);
 
   const enrichedTransactions = useMemo(
