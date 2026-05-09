@@ -1,0 +1,47 @@
+.dashboard-legend-box {
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-legend-title {
+  color: #111;
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.dashboard-legend-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.dashboard-legend-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+}
+
+.dashboard-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dashboard-legend-range {
+  color: #555;
+  font-size: 0.82rem;
+}
+
+.dashboard-legend-points {
+  font-weight: 700;
+  font-size: 0.82rem;
+}

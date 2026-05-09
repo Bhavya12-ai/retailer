@@ -1,9 +1,3 @@
-/**
- * App.js
- * ------
- * Root application component.  Renders the page shell (header + footer)
- * and mounts the RewardsDashboard.
- */
 
 import React, { useEffect, useState } from "react";
 import { useRewardsData } from "./hooks/useRewardsData";

@@ -1,8 +1,8 @@
 export const rewardRules = [
-  { range: "$0 – $50",    pointsDescription: "0 points",      },
-  { range: "$50 – $100",  pointsDescription: "+1 point / $1",   },
+  { range: "$0 - $50",    pointsDescription: "0 points",      },
+  { range: "$50 - $100",  pointsDescription: "+1 point / $1",   },
   { range: "Over $100",   pointsDescription: "+2 points / $1",   },
-  { range: "Example $120", pointsDescription: "2×$20 + 1×$50 = 90 points"},
+  { range: "Example $120", pointsDescription: "2*$20 + 1*$50 = 90 points"},
 ];
 
 
@@ -64,7 +64,7 @@ export const pageStrings = {
 };
 
 export const appHeaderMetadata = [
-  { icon: "📅", label: "Jan – Mar 2025" },
-  { icon: "👥", label: "5 Customers" },
-  { icon: "🧾", label: "36 Transactions" },
+  {  label: "Jan - Mar 2025" },
+  { label: "5 Customers" },
+  { label: "36 Transactions" },
 ];

@@ -1,28 +1,9 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import SummaryCards from "../components/SummaryCards";
-import { rewardRules } from "../constants/uiConstants";
+import RulesLegend from "../components/RulesLegend";
 import { transactionShape, customerTotalShape, monthShape, monthlyDataShape } from "../constants/propTypes";
 import "./styles/DashboardPage.css";
-
-function RulesLegend() {
-  return (
-    <div className="dashboard-legend-box">
-      <strong className="dashboard-legend-title">Reward Rules</strong>
-      <div className="dashboard-legend-grid">
-        {rewardRules.map((rule) => (
-          <div key={rule.range} className="dashboard-legend-chip">
-            <span className="dashboard-legend-dot" style={{ background: rule.color }} />
-            <span className="dashboard-legend-range">{rule.range}</span>
-            <span className="dashboard-legend-points" style={{ color: rule.color }}>
-              {rule.pointsDescription}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 const ITEMS_PER_PAGE = 10;
 
@@ -118,17 +99,6 @@ export default function DashboardPage({ loading, error, transactions, monthlyDat
     </main>
   );
 }
-
-DashboardPage.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.string,
-  transactions: PropTypes.arrayOf(transactionShape).isRequired,
-  monthlyData: monthlyDataShape.isRequired,
-  customerTotals: PropTypes.arrayOf(customerTotalShape).isRequired,
-  months: PropTypes.arrayOf(monthShape).isRequired,
-  onSelectCustomer: PropTypes.func.isRequired,
-  onReload: PropTypes.func.isRequired,
-};
 
 DashboardPage.propTypes = {
   loading: PropTypes.bool.isRequired,

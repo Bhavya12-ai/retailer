@@ -43,5 +43,20 @@
   { "transactionId": "T1029", "customerId": "C014", "customerName": "Nina Roberts",   "amount": 120, "date": "2025-02-15" },
 
   { "transactionId": "T1030", "customerId": "C015", "customerName": "Omar Ali",       "amount": 57,  "date": "2025-03-12" },
-  { "transactionId": "T1031", "customerId": "C015", "customerName": "Omar Ali",       "amount": 215, "date": "2025-03-29" }
+  { "transactionId": "T1031", "customerId": "C015", "customerName": "Omar Ali",       "amount": 215, "date": "2025-03-29" },
+
+  { "transactionId": "T1032", "customerId": "C016", "customerName": "Paula Nguyen",   "amount": 92,  "date": "2025-01-17" },
+  { "transactionId": "T1033", "customerId": "C016", "customerName": "Paula Nguyen",   "amount": 140, "date": "2025-02-28" },
+
+  { "transactionId": "T1034", "customerId": "C017", "customerName": "Quinn Taylor",   "amount": 68,  "date": "2025-03-04" },
+  { "transactionId": "T1035", "customerId": "C017", "customerName": "Quinn Taylor",   "amount": 180, "date": "2025-03-25" },
+
+  { "transactionId": "T1036", "customerId": "C018", "customerName": "Rachel Singh",   "amount": 105, "date": "2025-01-09" },
+  { "transactionId": "T1037", "customerId": "C018", "customerName": "Rachel Singh",   "amount": 45,  "date": "2025-02-18" },
+
+  { "transactionId": "T1038", "customerId": "C019", "customerName": "Sam Kim",        "amount": 160, "date": "2025-02-11" },
+  { "transactionId": "T1039", "customerId": "C019", "customerName": "Sam Kim",        "amount": 72,  "date": "2025-03-14" },
+
+  { "transactionId": "T1040", "customerId": "C020", "customerName": "Tina Lopez",     "amount": 125, "date": "2025-01-25" },
+  { "transactionId": "T1041", "customerId": "C020", "customerName": "Tina Lopez",     "amount": 88,  "date": "2025-03-07" }
 ]
